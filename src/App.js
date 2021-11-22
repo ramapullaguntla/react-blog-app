@@ -1,7 +1,7 @@
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import BlogHeader from "./components/Headers/header";
 import PostsList from "./components/Posts/PostsList";
 import AddPost from "./components/Posts/AddPost";
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 
 
@@ -28,9 +28,9 @@ function App() {
           <PostsList postdata = {posts}/>  
        </div>
        <Router>
-        <Routes>          
-            <Route path="/addpost" component={AddPost}></Route>
-        </Routes>
+       <Switch> 
+       <Route path="/addpost" component={AddPost}></Route>
+      </Switch> 
        </Router>
     </div>
   );

@@ -7,9 +7,9 @@ const BlogHeader = () =>
         <div className="header">
             <h2>React JS Blog</h2>
              <ul className="links">
-                 <li><Link  to={"/"}>Home</Link></li>
-                 <li><Link to={"/addpost"}>Post</Link></li>
-                 <li><Link to={"/"}>About</Link></li>              
+                 <li>Home</li>   
+                 <li>Post</li>
+                 <li>ContactUs</li>         
              </ul>
         </div>
     );

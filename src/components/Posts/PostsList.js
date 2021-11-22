@@ -18,6 +18,7 @@ const PostsList = (props) =>
     return(
         <div>
             {renderPosts()}
+            
         </div>
     );
 };
