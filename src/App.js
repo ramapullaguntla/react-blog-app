@@ -8,21 +8,7 @@ import BlogFooter from "./components/Headers/footer";
 
 
 function App() {
-
-  // const posts = [
-  //   {
-  //     title: "First Blog Post",
-  //     text : "this is about react"
-  //   },
-  //   {
-  //     title: "Second Blog post",
-  //     text : "this is about NodeJS"
-  //   },
-  //   {
-  //     title: "Third Blog Post",
-  //     text : "this is about react"
-  //   }
-  // ];
+  
 
   const [blogposts, setposts] = useState([]);
 
