@@ -2,36 +2,70 @@ import BlogHeader from "./components/Headers/header";
 import PostsList from "./components/Posts/PostsList";
 import AddPost from "./components/Posts/AddPost";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import BlogFooter from "./components/Headers/footer";
 
 
 
 function App() {
 
-  const posts = [
-    {
-      title: "First Blog Post",
-      text : "this is about react"
-    },
-    {
-      title: "Second Blog post",
-      text : "this is about NodeJS"
-    },
-    {
-      title: "Third Blog Post",
-      text : "this is about react"
-    }
-  ];
+  // const posts = [
+  //   {
+  //     title: "First Blog Post",
+  //     text : "this is about react"
+  //   },
+  //   {
+  //     title: "Second Blog post",
+  //     text : "this is about NodeJS"
+  //   },
+  //   {
+  //     title: "Third Blog Post",
+  //     text : "this is about react"
+  //   }
+  // ];
+
+  const [blogposts, setposts] = useState([]);
+
+  const POST_KEY = "BLOGPOSTS";
+  
+  useEffect(() =>
+  {
+      console.log("useEffect rendered..");
+      
+      if(!localStorage.getItem(POST_KEY))
+      {
+        localStorage.setItem(POST_KEY, JSON.stringify([]));         
+      }
+      else
+      {
+         const localPosts = JSON.parse(localStorage.getItem(POST_KEY));
+         setposts(localPosts);
+      }
+  },
+    []
+  );
+
+  const addPost = (p) =>
+  {
+      const newPosts = [...blogposts, p];
+
+      console.log("new posts ", newPosts);
+
+      localStorage.setItem(POST_KEY, JSON.stringify(newPosts));
+      setposts(newPosts);
+      
+  };
+
   return (
-    <div> 
-       <BlogHeader/>
-       <div className="blogcontainer">
-          <PostsList postdata = {posts}/>  
-       </div>
+    <div>        
        <Router>
-       <Switch> 
-       <Route path="/addpost" component={AddPost}></Route>
-      </Switch> 
-       </Router>
+        <BlogHeader/>      
+        <Switch>
+        <Route path="/" exact render={(props) => <PostsList {...props} postdata = {blogposts}/>}/>
+        <Route path="/addpost" exact render={(props) => <AddPost addpostHandler={addPost}/>} />
+        </Switch> 
+        <BlogFooter count = {blogposts.length}/>
+       </Router>      
     </div>
   );
 }

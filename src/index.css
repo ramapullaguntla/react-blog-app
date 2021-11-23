@@ -24,7 +24,12 @@ code {
 }
 
 *{
-  text-decoration: none;
+  text-decoration: none;  
+}
+
+.footer{
+
+  text-align: center;
 }
 
 .header h2{
@@ -67,13 +72,53 @@ code {
 }
 
 .eachpost
-{
-  margin:1px;
-  padding: 5px;
+{  
+  display: flex;
+  flex-direction: column;
+  
+  
   border-bottom: 1px solid black;
+}
+
+.eachpost h2{
+  margin: 5px;
+}
+
+.eachpost p
+{
+  margin: 5px;
 }
 
 .eachpost:last-of-type
 {
   border-bottom: none;
+}
+
+/* CSS styles for forms */
+.formcontainer
+{
+   width: 500px;  
+   margin: auto auto;
+}
+
+.addform
+{
+  display: flex;
+  flex-wrap: wrap;  
+  padding: 50px;
+  
+}
+
+.addform *{
+  flex-basis: 100%;
+  margin:5px;
+}
+
+.uibutton
+{
+  background-color: #5c6bc0;
+  color: white;
+  display: inline-block;
+  padding: 8px;
+  flex-basis: auto;
 }
