@@ -4,29 +4,21 @@ import AddPost from "./components/Posts/AddPost";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import BlogFooter from "./components/Headers/footer";
+import { blogapi } from "./components/api/blogapi";
 
 
 
 function App() {
-
-  // const posts = [
-  //   {
-  //     title: "First Blog Post",
-  //     text : "this is about react"
-  //   },
-  //   {
-  //     title: "Second Blog post",
-  //     text : "this is about NodeJS"
-  //   },
-  //   {
-  //     title: "Third Blog Post",
-  //     text : "this is about react"
-  //   }
-  // ];
-
+  
   const [blogposts, setposts] = useState([]);
 
   const POST_KEY = "BLOGPOSTS";
+
+  const getAllBlogPosts = async () =>
+  {
+    var response = await blogapi.get("/blogs");
+    return response.data;
+  };
   
   useEffect(() =>
   {
